@@ -1,0 +1,59 @@
+//App.js--------------------
+import "./App.css"
+import Video from './components/Video'
+
+function App(){
+  let obj={
+    title:"React js tutorial" ,
+    views:"10k",
+     time:"1 month ago"
+  }
+return ( 
+          <div>
+        <div>hello</div>
+        <Video{...obj}></Video>
+        <Video title="Node Js tutorial" views="3k" time="3days"></Video> 
+        </div>
+)
+}  
+export default App; 
+// Video ke sare data ko as a object store krte hai
+// object me = ki jagah : lagta hai
+
+
+
+
+//index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+   <App/>
+  </React.StrictMode>
+); 
+
+
+
+
+
+
+// practice code
+import './Video.css'
+function Video({title,views,time}){
+    // let key="React js"
+return (
+   <>
+   <img
+      src="https://placebear.com/160/90"
+      alt="Katherine Johnson"
+    />
+<div className="bg">{title}</div>
+<div className="view">{views}</div>
+<div className="t_time">{time}</div>
+</>
+);
+}
+export default Video;
