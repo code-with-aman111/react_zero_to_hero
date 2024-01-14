@@ -1,0 +1,52 @@
+import './Form.css'
+const Form = () => {
+    // const[name,Newname]=useState('');
+    // const[email,Newemail]=useState('');
+    // const[password, Newpassword]=useState('');
+    const[input,Setinput]=useState(
+        {
+        name:'',
+        email:'',
+        password:''
+        }
+    );
+    // const handlename=(e)=>
+    // {
+    //     Newname(e.target.value);
+    // }
+    // const handleemail=(e)=>
+    // {
+    //     Newemail(e.target.value);
+    // }
+    // const handlepassword=(e)=>{
+    //     Newpassword(e.target.value);
+    // }
+     const handleinput=(e)=>{
+        const {name,value}=e.target;
+        Setinput({...input,[name]:value});
+     }
+    const handledata=(e)=>{
+        e.preventDefault();
+    }
+  return (
+    <div>
+      <form className='F_page'>
+        <label className='res'>
+            Name:
+            <input type="text" value={input.name} name="name"onChange={handleinput}/>
+        </label>
+        <label className='res'>
+            Email:
+            <input type="email" value={input.email} name="email1" onChange={handleinput}/>
+        </label>
+        <label className='res'>
+            Password:
+            <input type="password" value={input.password} name="password"onChange={handleinput}/>
+        </label>
+        <button onClick={handledata}>SUBMIT</button>
+      </form>
+    </div>
+  )
+}
+
+export default Form
