@@ -1,0 +1,36 @@
+import React,{useEffect,useState} from 'react'
+const MultipleReturn = () => {
+const[datas,setDatas]=useState([]);
+const[isscroll,setIsscroll]=useState(false);
+const[error,setError]=useState(null);
+useEffect(()=>{
+  async function apicheck(){
+    try{
+    const data=await fetch('https://api.github.com/users');
+    const val=await data.json();
+    setDatas(val);
+    }
+    catch(error){
+      setError(error);
+    }
+  }
+  apicheck();
+},[]);
+if(isscroll){
+  return <p>.....Loading</p>
+}
+if(error){
+  return  <p>error:{error.message}</p>
+}
+  return (
+    <div>
+      <h1>User List</h1>
+      <ul>
+    {
+      datas.map((ele)=><li key={ele.id}>{ele.login}</li>)
+    }
+      </ul>
+    </div>
+  )
+}
+export default MultipleReturn
